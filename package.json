@@ -1,7 +1,7 @@
 {
   "name": "Shapifier",
   "version": "0.0.1",
-  "description": "Command-line utility to add polygon geojson fields to cvs point data",
+  "description": "Command-line utility to add polygon geojson fields to csv point data",
   "main": "index.js",
   "author": "Evan Smith <evanbsmith@gmail.com>",
   "license": "MIT",
