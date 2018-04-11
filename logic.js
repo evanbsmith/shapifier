@@ -5,7 +5,11 @@ const stringify = require('csv-stringify/lib/sync');
 const GeoLookupFactory = require('geojson-geometries-lookup');
 const files = require('./dirpath');
 
-
+// TO DO
+// 1 - allow json input and user-selected output format
+// 2 - test custom lat long fieldnames
+// 3 - add documentation
+// 4 - switch from sync to async approach to allow for larger files
 
 const shapify = (csvFileName, geojsonFileName, featurePropertyName, latField, longField) => {
 
@@ -22,7 +26,7 @@ const shapify = (csvFileName, geojsonFileName, featurePropertyName, latField, lo
   // console.log('geojsonFileName', geojsonFileName);
   // console.log('geojsonFile', geojsonFile);
   // console.log('geojsonFileNoExt', geojsonFileNoExt);
-  
+
   const featureProperty = featurePropertyName;
 
   const lat = latField || 'latitude';
