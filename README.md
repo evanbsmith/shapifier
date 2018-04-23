@@ -26,23 +26,23 @@ The `shapify` command has the following `<required>` and `[optional]` arguments:
 ```bash
 $ shapifier shapify <point-file-name> <polygon-file-name> <polygon-field> [latitude-field] [longitude-field]
 ```
-### <point-file-name>
+### point-file-name
 __Required__
 Name of csv file containing the points you want to match. Does not have to include file extension (e.g., `points.csv` and `points` will both work).
 
-### <polygon-file-name>
+### polygon-file-name
 __Required__
 Name of the geojson file containing the polygons you want to match the points to. Does not have to include file extension (e.g., `polygons.geojson` and `polygons` will both work).
 
-### <polygon-field>
+### polygon-field
 __Required__
 Name of the geojson feature property field that you want to attach to the point data (e.g., name, ID, code, etc.).
 
-### [latitude-field]
+### latitude-field
 __Optional__
 Name of the csv field containing latitude data for each point. If blank, defaults to `latitude`.
 
-### [longitude-field]
+### longitude-field
 __Optional__
 Name of the csv field containing longitude data for each point. If blank, defaults to `longitude`.
 
