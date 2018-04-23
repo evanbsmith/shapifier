@@ -5,21 +5,20 @@ const GeoLookupFactory = require('geojson-geometries-lookup');
 
 // TO DO
 // 1 - allow json input and user-selected output format
-// 2 - test custom lat long fieldnames
 // 3 - add documentation
 // 4 - switch from sync to async approach to allow for larger files
 
-const shapify = (csvFileName, geojsonFileName, featurePropertyName, latField, longField) => {
+const shapify = (csvFileName, geojsonFileName, featurePropertyName, latField, longField, multipleFlag) => {
 
   // 0 - variables
 
-  const csvFile = csvFileName.search(/[.]/g) === -1 ? csvFileName : csvFileName.slice(0,csvFileName.search(/[.]/g)) + '.csv';
+  const csvFile = csvFileName.search(/[.]/g) === -1 ? csvFileName + '.csv' : csvFileName;
   const csvFileNoExt = csvFileName.search(/[.]/g) === -1 ? csvFileName : csvFileName.slice(0,csvFileName.search(/[.]/g));
   // console.log('csvFileName', csvFileName);
   // console.log('csvFile', csvFile);
   // console.log('csvFileNoExt', csvFileNoExt);
 
-  const geojsonFile = geojsonFileName.search(/[.]/g) === -1 ? geojsonFileName : geojsonFileName.slice(0,geojsonFileName.search(/[.]/g)) + '.geojson';
+  const geojsonFile = geojsonFileName.search(/[.]/g) === -1 ? geojsonFileName + '.geojson' : geojsonFileName;
   const geojsonFileNoExt = geojsonFileName.search(/[.]/g) === -1 ? geojsonFileName : geojsonFileName.slice(0,geojsonFileName.search(/[.]/g));
   // console.log('geojsonFileName', geojsonFileName);
   // console.log('geojsonFile', geojsonFile);
@@ -27,8 +26,9 @@ const shapify = (csvFileName, geojsonFileName, featurePropertyName, latField, lo
 
   const featureProperty = featurePropertyName;
 
-  const lat = latField || 'latitude';
-  const long = longField || 'longitude';
+  let lat = latField || 'latitude';
+  let long = longField || 'longitude';
+  let mFlag = multipleFlag || false;
 
   // 1 - READ AND PARSE CSV
 
@@ -74,7 +74,17 @@ const shapify = (csvFileName, geojsonFileName, featurePropertyName, latField, lo
     }
     else if (geolookupResult.features.length > 1) {
         // what to do if more than 1 match?
-        el[featureProperty] = 'MULTIPLE';
+        if(mFlag){
+          let prop = '';
+          geolookupResult.features.forEach(function(e,i,a){
+            prop+=e.properties[featureProperty];
+            if(i < (a.length - 1)) {prop+=';'}
+          });
+          el[featureProperty] = prop;
+        }
+        else {
+          el[featureProperty] = 'MULTIPLE';
+        }
         // console.log('transformed el', el);
         counts.multiple++;
         return el;
