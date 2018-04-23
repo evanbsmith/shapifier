@@ -1,9 +1,7 @@
 const fs = require('fs');
-const cvs = require('csv');
 const parse = require('csv-parse/lib/sync');
 const stringify = require('csv-stringify/lib/sync');
 const GeoLookupFactory = require('geojson-geometries-lookup');
-const files = require('./dirpath');
 
 // TO DO
 // 1 - allow json input and user-selected output format
@@ -105,7 +103,7 @@ const shapify = (csvFileName, geojsonFileName, featurePropertyName, latField, lo
     console.log("Points Matched (Single): ",counts.single);
     console.log("Points Matched (Multiple): ",counts.multiple);
     console.log("Points Not Matched: ",counts.nomatch);
-    console.log("Output saved as " + files.getCurrentDirectoryBase() + "/" + outputFileName);
+    console.log("Output saved as " + __dirname + "/" + outputFileName);
   });
 };
 
