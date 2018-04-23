@@ -12,6 +12,10 @@
     "geojson-geometries-lookup": "^0.2.5",
     "npm": "^5.8.0"
   },
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/evanbsmith/shapifier.git"
+  },
   "preferGlobal": true,
   "bin": {
     "shapifier": "./index.js"
