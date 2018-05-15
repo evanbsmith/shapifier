@@ -28,24 +28,19 @@ $ shapifier shapify <point-file-name> <polygon-file-name> <polygon-field> [latit
 ```
 All arguments are case sensitive.
 ### Arguments
-#### 1. point-file-name
-__Required__
+#### 1. point-file-name (Required)
 Name of csv file containing the points you want to match. Does not have to include file extension (e.g., `points.csv` and `points` will both work).
 
-#### 2. polygon-file-name
-__Required__
+#### 2. polygon-file-name (Required)
 Name of the geojson file containing the polygons you want to match the points to. Does not have to include file extension (e.g., `polygons.geojson` and `polygons` will both work).
 
-#### 3. polygon-field
-__Required__
+#### 3. polygon-field (Required)
 Name of the geojson feature property field that you want to attach to the point data (e.g., name, ID, code, etc.).
 
-#### 4. latitude-field
-__Optional__
+#### 4. latitude-field (Optional)
 Name of the csv field containing latitude data for each point. If blank, defaults to `latitude`.
 
-#### 5. longitude-field
-__Optional__
+#### 5. longitude-field (Optional)
 Name of the csv field containing longitude data for each point. If blank, defaults to `longitude`.
 
 ### Multiple Match Flag
